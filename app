@@ -83,7 +83,7 @@ def whatsapp_webhook():
         if image_response:
             response_text = f"Aqui está a imagem que eu criei para '{user_message}':\n{image_response}"
         else:
-            response_text = "Desculpe, não consegui gerar a imagem. Por favor, tente novamente mais tarde ou verifique minha configuração (Hugging Face API Token)."
+            response_text = "Desculpe, não consegui gerar a imagem. Por favor, tente novamente mais tarde ou verifique minha configuração."
 
         app.logger.info(f"Sending response: {response_text}")
 
