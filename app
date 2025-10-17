@@ -37,8 +37,7 @@ def generate_image(prompt: str) -> str | None:
     payload = {"inputs": prompt}
     try:
         response = requests.post(HUGGINGFACE_API_URL, headers=HEADERS, json=payload)
-        response.raise_for_status()  # Raise an exception for HTTP errors (4xx or 5xx)
-
+        response.raise_for_status()
 
         return f"Imagem gerada com sucesso para o prompt: '{prompt}'. (A URL da imagem seria fornecida aqui após o upload para um serviço de hospedagem de arquivos)."
 
@@ -49,9 +48,6 @@ def generate_image(prompt: str) -> str | None:
         app.logger.error(f"An unexpected error occurred: {e}")
         return None
 
-# --- WhatsApp Webhook Endpoint (Conceptual) ---
-# Lembre-se: Isso é conceitual. A integração real com WhatsApp Business API
-# geralmente exige um provedor pago.
 @app.route('/whatsapp_webhook', methods=['POST'])
 def whatsapp_webhook():
     try:
@@ -59,9 +55,9 @@ def whatsapp_webhook():
         app.logger.info(f"Received WhatsApp webhook data: {data}")
 
         user_message = ""
-        if 'Body' in data: # Exemplo para Twilio
+        if 'Body' in data:
             user_message = data.get('Body', '').strip()
-        elif 'entry' in data and data['entry']: # Exemplo para Meta Webhooks
+        elif 'entry' in data and data['entry']: 
             for entry in data['entry']:
                 for change in entry.get('changes', []):
                     if change.get('field') == 'messages':
