@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pintando com Código</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Crie sua Imagem com AI </h1>
+        <p>Descreva o que você quer ver e deixe a IA fazer o resto!</p>
+
+        <div class="input-section">
+            <textarea id="promptInput" placeholder="Ex: 'Um astronauta andando a cavalo na lua, estilo fotorrealista'" rows="4"></textarea>
+            <button id="generateButton">Gerar Imagem</button>
+        </div>
+        
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <p>Gerando imagem, por favor aguarde... Isso pode levar alguns segundos.</p>
+        </div>
+
+        <div id="errorMessage" class="error-message hidden">
+        </div>
+
+        <div id="image-display" class="hidden">
+            <h2>Sua Imagem Gerada:</h2>
+            <div class="image-card">
+                <img id="generatedImage" src="" alt="Imagem gerada pela IA">
+                <p class="prompt-text">Prompt: <span id="displayedPrompt"></span></p>
+                <a id="downloadLink" href="#" download="generated_image.png" class="button download-button">Download</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
